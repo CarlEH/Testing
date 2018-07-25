@@ -13,9 +13,10 @@ def super_fizz_buzz():
 	if len(request.json) != 5:
 		abort(400)
 
-	str1 = str(request.json['string1'])
-	str2 = str(request.json['string2'])
 	try:
+		str1 = str(request.json['string1'])
+		str2 = str(request.json['string2'])
+	
 		limit = int(request.json['limit'])
 		first_multiple = int(request.json['int1'])
 		second_multiple = int(request.json['int2'])
@@ -45,4 +46,4 @@ def send_ok(result):
 	return jsonify({'message':result})
 
 def send_error(bad_param):
-	return jsonify({'error': str(bad_param)})
+	return jsonify({'error': 'bad or missing parameters'})
